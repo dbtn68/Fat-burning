@@ -2,24 +2,43 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>운동 프로그램 표</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>운동 프로그램 표 (전체 축소 보기)</title>
+
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 16px;
+            padding: 10px;
+            transform-origin: top left;
         }
 
-        h2 {
-            margin-top: 40px;
+        /* 화면 크기에 따라 전체 페이지 축소 비율 자동 조정 */
+        @media (max-width: 600px) {
+            body {
+                transform: scale(0.55);   /* 🔥 전체 축소 */
+                width: 180%;              /* 축소된 크기 맞춤 */
+            }
         }
 
-        /* 기존 표 디자인 유지 */
+        @media (max-width: 420px) {
+            body {
+                transform: scale(0.48); 
+                width: 210%;
+            }
+        }
+
+        @media (max-width: 360px) {
+            body {
+                transform: scale(0.45); 
+                width: 220%;
+            }
+        }
+
         table {
             border-collapse: collapse;
-            width: 600px; /* PC 기준 */
-            margin-bottom: 40px;
+            width: 600px;
+            margin-bottom: 35px;
         }
 
         th, td {
@@ -32,88 +51,58 @@
             background-color: #f2f2f2;
         }
 
-        /* 모바일 자동 축소 */
-        .table-container {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-        }
-
-        @media (max-width: 600px) {
-            table {
-                width: 100vw;
-                transform: scale(0.9);
-                transform-origin: top center;
-            }
-        }
-
-        @media (max-width: 420px) {
-            table {
-                transform: scale(0.8);
-            }
-        }
-
-        @media (max-width: 360px) {
-            table {
-                transform: scale(0.75);
-            }
+        h2 {
+            margin-top: 25px;
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
 
 <h2>인클라인 프로그램 (Incline)</h2>
-<div class="table-container">
-    <table>
-      <thead>
+<table>
+    <thead>
         <tr>
-          <th>경사</th>
-          <th>속도</th>
-          <th>시간</th>
+            <th>경사</th>
+            <th>속도</th>
+            <th>시간</th>
         </tr>
-      </thead>
-      <tbody>
+    </thead>
+    <tbody>
         <tr><td>15</td><td>3</td><td>6분</td></tr>
         <tr><td>25</td><td>3</td><td>6분</td></tr>
         <tr><td>50</td><td>3</td><td>3분</td></tr>
         <tr><td>15</td><td>3</td><td>6분</td></tr>
         <tr><td>25</td><td>3</td><td>6분</td></tr>
         <tr><td>50</td><td>3</td><td>3분</td></tr>
-      </tbody>
-    </table>
-</div>
-
+    </tbody>
+</table>
 
 <h2>런닝머신 프로그램 (Running)</h2>
-<div class="table-container">
-    <table>
-      <thead>
+<table>
+    <thead>
         <tr>
-          <th>속도</th>
-          <th>시간</th>
+            <th>속도</th>
+            <th>시간</th>
         </tr>
-      </thead>
-      <tbody>
-        <!-- 1세트 -->
+    </thead>
+    <tbody>
         <tr><td>5.5</td><td>5분</td></tr>
         <tr><td>6.5</td><td>1분 30초</td></tr>
         <tr><td>9~10</td><td>2분</td></tr>
         <tr><td>3</td><td>1분 30초</td></tr>
 
-        <!-- 2세트 -->
         <tr><td>5.5</td><td>5분</td></tr>
         <tr><td>6.5</td><td>1분 30초</td></tr>
         <tr><td>9~10</td><td>2분</td></tr>
         <tr><td>3</td><td>1분 30초</td></tr>
 
-        <!-- 3세트 -->
         <tr><td>5.5</td><td>5분</td></tr>
         <tr><td>6.5</td><td>1분 30초</td></tr>
         <tr><td>9~10</td><td>2분</td></tr>
         <tr><td>3</td><td>1분 30초</td></tr>
-      </tbody>
-    </table>
-</div>
+    </tbody>
+</table>
 
 </body>
 </html>
