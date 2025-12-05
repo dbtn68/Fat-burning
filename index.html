@@ -2,84 +2,292 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>유산소 루틴</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>운동 프로그램 표 (모바일 최적화)</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        :root{
+            --max-width: 980px;
+            --accent: #2b7cff;
+            --muted: #f2f2f2;
+            --border: #ddd;
+            --card-bg: #fff;
+            --text: #222;
         }
-        table {
-            border-collapse: collapse;
-            width: 600px;
-            margin-bottom: 40px;
+
+        html,body{
+            height:100%;
+            margin:0;
+            padding:0;
+            background:#fafafa;
+            color:var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Noto Sans KR", "Helvetica Neue", Arial, sans-serif;
+            -webkit-font-smoothing:antialiased;
+            -moz-osx-font-smoothing:grayscale;
         }
-        th, td {
-            border: 1px solid #333;
-            padding: 8px;
-            text-align: center;
+
+        .wrap{
+            max-width:var(--max-width);
+            margin:18px auto;
+            padding:0 16px;
+            box-sizing:border-box;
         }
-        th {
-            background-color: #f2f2f2;
+
+        h1{
+            font-size:18px;
+            margin:6px 0 8px;
+            text-align:center;
         }
-        h2 {
-            margin-top: 40px;
+        h2{
+            font-size:16px;
+            margin:20px 0 10px;
+            color:var(--accent);
+            text-align:left;
+        }
+
+        /* Table base styles */
+        .table-wrap{
+            width:100%;
+            overflow-x:auto; /* 가로 스크롤 허용 */
+            -webkit-overflow-scrolling:touch;
+            background:transparent;
+            border-radius:8px;
+        }
+
+        table{
+            width:100%;
+            border-collapse:collapse;
+            min-width:520px; /* 데스크탑에서 자연스러운 레이아웃 */
+            background:var(--card-bg);
+            box-shadow:0 1px 2px rgba(0,0,0,0.03);
+        }
+
+        thead th{
+            background:var(--muted);
+            text-align:center;
+            padding:10px 12px;
+            font-weight:600;
+            border-bottom:1px solid var(--border);
+            position:sticky;
+            top:0;
+            z-index:1;
+        }
+
+        th, td{
+            border-bottom:1px solid var(--border);
+            padding:10px 12px;
+            text-align:center;
+            font-size:14px;
+        }
+
+        tbody tr:nth-child(even){
+            background: #ffffff;
+        }
+
+        tbody tr:nth-child(odd){
+            background: #fbfbfb;
+        }
+
+        /* 작은 화면 (모바일)에서 카드형 표시 */
+        @media (max-width:600px){
+            table{
+                min-width:unset;
+                width:100%;
+            }
+            thead{ display:none; } /* 헤더 숨김 (각 셀에 라벨을 표시) */
+
+            tbody tr{
+                display:block;
+                margin:10px 0;
+                border-radius:8px;
+                overflow:hidden;
+                box-shadow:0 1px 3px rgba(0,0,0,0.04);
+                border:1px solid var(--border);
+                background:var(--card-bg);
+            }
+
+            tbody td{
+                display:flex;
+                justify-content:space-between;
+                align-items:center;
+                padding:12px;
+                text-align:left;
+                border-bottom:1px dashed #eee;
+                font-size:15px;
+            }
+
+            tbody td:last-child{
+                border-bottom:0;
+            }
+
+            /* 각 td의 왼쪽에 라벨을 표시 */
+            tbody td::before{
+                content: attr(data-label);
+                flex:0 0 45%;
+                max-width:45%;
+                font-weight:600;
+                color:#555;
+                padding-right:8px;
+            }
+
+            /* 숫자/값 정렬 */
+            tbody td.value{
+                text-align:right;
+                padding-left:8px;
+            }
+        }
+
+        /* 세트 구분용 소제목 스타일 */
+        .note {
+            font-size:13px;
+            color:#666;
+            margin-bottom:6px;
+        }
+
+        /* 작은 데스크탑/태블릿에서 더 넓게 보이도록 */
+        @media (min-width:601px) and (max-width:980px){
+            h1{ font-size:20px; }
+            th, td{ padding:12px; font-size:15px; }
         }
     </style>
 </head>
 <body>
+    <div class="wrap">
+        <h1>운동 프로그램 (모바일 최적화)</h1>
 
-<h2>인클라인 프로그램 (Incline)</h2>
+        <h2>인클라인 프로그램 (Incline)</h2>
+        <div class="note">경사 + 속도 3 구간</div>
+        <div class="table-wrap" aria-hidden="false">
+            <table role="table" aria-label="인클라인 프로그램">
+                <thead>
+                    <tr>
+                        <th>구분</th>
+                        <th>경사</th>
+                        <th>속도</th>
+                        <th>시간</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="구분">1</td>
+                        <td data-label="경사">15</td>
+                        <td data-label="속도">3</td>
+                        <td data-label="시간">6분</td>
+                    </tr>
+                    <tr>
+                        <td data-label="구분">2</td>
+                        <td data-label="경사">25</td>
+                        <td data-label="속도">3</td>
+                        <td data-label="시간">6분</td>
+                    </tr>
+                    <tr>
+                        <td data-label="구분">3</td>
+                        <td data-label="경사">50</td>
+                        <td data-label="속도">3</td>
+                        <td data-label="시간">3분</td>
+                    </tr>
+                    <tr>
+                        <td data-label="구분">4</td>
+                        <td data-label="경사">15</td>
+                        <td data-label="속도">3</td>
+                        <td data-label="시간">6분</td>
+                    </tr>
+                    <tr>
+                        <td data-label="구분">5</td>
+                        <td data-label="경사">25</td>
+                        <td data-label="속도">3</td>
+                        <td data-label="시간">6분</td>
+                    </tr>
+                    <tr>
+                        <td data-label="구분">6</td>
+                        <td data-label="경사">50</td>
+                        <td data-label="속도">3</td>
+                        <td data-label="시간">3분</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>구분</th>
-      <th>경사</th>
-      <th>속도</th>
-      <th>시간</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td>1</td><td>15</td><td>3</td><td>6분</td></tr>
-    <tr><td>2</td><td>25</td><td>3</td><td>6분</td></tr>
-    <tr><td>3</td><td>50</td><td>3</td><td>3분</td></tr>
-    <tr><td>4</td><td>15</td><td>3</td><td>6분</td></tr>
-    <tr><td>5</td><td>25</td><td>3</td><td>6분</td></tr>
-    <tr><td>6</td><td>50</td><td>3</td><td>3분</td></tr>
-  </tbody>
-</table>
+        <h2>런닝머신 프로그램 (Running)</h2>
+        <div class="note">세트별로 반복되는 속도/시간 패턴 (3세트)</div>
+        <div class="table-wrap">
+            <table role="table" aria-label="런닝머신 프로그램">
+                <thead>
+                    <tr>
+                        <th>구분</th>
+                        <th>속도</th>
+                        <th>시간</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 1세트 -->
+                    <tr>
+                        <td data-label="구분">1</td>
+                        <td data-label="속도">5.5</td>
+                        <td data-label="시간">5분</td>
+                    </tr>
+                    <tr>
+                        <td data-label="구분">2</td>
+                        <td data-label="속도">6.5</td>
+                        <td data-label="시간">1분 30초</td>
+                    </tr>
+                    <tr>
+                        <td data-label="구분">3</td>
+                        <td data-label="속도">9~10</td>
+                        <td data-label="시간">2분</td>
+                    </tr>
+                    <tr>
+                        <td data-label="구분">4</td>
+                        <td data-label="속도">3</td>
+                        <td data-label="시간">1분 30초</td>
+                    </tr>
 
+                    <!-- 2세트 -->
+                    <tr>
+                        <td data-label="구분">5</td>
+                        <td data-label="속도">5.5</td>
+                        <td data-label="시간">5분</td>
+                    </tr>
+                    <tr>
+                        <td data-label="구분">6</td>
+                        <td data-label="속도">6.5</td>
+                        <td data-label="시간">1분 30초</td>
+                    </tr>
+                    <tr>
+                        <td data-label="구분">7</td>
+                        <td data-label="속도">9~10</td>
+                        <td data-label="시간">2분</td>
+                    </tr>
+                    <tr>
+                        <td data-label="구분">8</td>
+                        <td data-label="속도">3</td>
+                        <td data-label="시간">1분 30초</td>
+                    </tr>
 
-<h2>런닝머신 프로그램 (Running)</h2>
+                    <!-- 3세트 (추가) -->
+                    <tr>
+                        <td data-label="구분">9</td>
+                        <td data-label="속도">5.5</td>
+                        <td data-label="시간">5분</td>
+                    </tr>
+                    <tr>
+                        <td data-label="구분">10</td>
+                        <td data-label="속도">6.5</td>
+                        <td data-label="시간">1분 30초</td>
+                    </tr>
+                    <tr>
+                        <td data-label="구분">11</td>
+                        <td data-label="속도">9~10</td>
+                        <td data-label="시간">2분</td>
+                    </tr>
+                    <tr>
+                        <td data-label="구분">12</td>
+                        <td data-label="속도">3</td>
+                        <td data-label="시간">1분 30초</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>구분</th>
-      <th>속도</th>
-      <th>시간</th>
-    </tr>
-  </thead>
-  <tbody>
-    <!-- 1세트 -->
-    <tr><td>1</td><td>5.5</td><td>5분</td></tr>
-    <tr><td>2</td><td>6.5</td><td>1분 30초</td></tr>
-    <tr><td>3</td><td>9~10</td><td>2분</td></tr>
-    <tr><td>4</td><td>3</td><td>1분 30초</td></tr>
-
-    <!-- 2세트 -->
-    <tr><td>5</td><td>5.5</td><td>5분</td></tr>
-    <tr><td>6</td><td>6.5</td><td>1분 30초</td></tr>
-    <tr><td>7</td><td>9~10</td><td>2분</td></tr>
-    <tr><td>8</td><td>3</td><td>1분 30초</td></tr>
-
-    <!-- 🔥 추가된 3세트 -->
-    <tr><td>9</td><td>5.5</td><td>5분</td></tr>
-    <tr><td>10</td><td>6.5</td><td>1분 30초</td></tr>
-    <tr><td>11</td><td>9~10</td><td>2분</td></tr>
-    <tr><td>12</td><td>3</td><td>1분 30초</td></tr>
-
-  </tbody>
-</table>
-
+    </div>
 </body>
 </html>
